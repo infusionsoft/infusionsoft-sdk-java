@@ -2,7 +2,7 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 group = 'com.infusionsoft'
-version = '0.1'
+version = '0.0.1'
 
 buildscript {
     repositories {
@@ -83,7 +83,7 @@ if(hasProperty('target') && target == 'android') {
 
     install {
         repositories.mavenInstaller {
-            pom.artifactId = 'infusionsoft-api'
+            pom.artifactId = 'infusionsoft-sdk-java'
         }
     }
 

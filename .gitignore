@@ -1,7 +1,3 @@
-.idea
-.swagger-codegen
-*.iml
-
 *.class
 
 # Mobile Tools for Java (J2ME)

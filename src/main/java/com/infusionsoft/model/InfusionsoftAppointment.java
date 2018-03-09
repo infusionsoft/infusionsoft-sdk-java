@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * InfusionsoftAppointment
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-08T21:00:11.570Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-03-09T21:05:58.976Z")
 public class InfusionsoftAppointment {
   @SerializedName("contact_id")
   private Long contactId = null;

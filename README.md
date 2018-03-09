@@ -1,4 +1,4 @@
-# infusionsoft-api
+# infusionsoft-sdk-java
 
 ## Requirements
 
@@ -27,8 +27,8 @@ Add this dependency to your project's POM:
 ```xml
 <dependency>
     <groupId>com.infusionsoft</groupId>
-    <artifactId>infusionsoft-api</artifactId>
-    <version>0.1</version>
+    <artifactId>infusionsoft-sdk-java</artifactId>
+    <version>0.0.1</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -38,7 +38,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.infusionsoft:infusionsoft-api:0.1"
+compile "com.infusionsoft:infusionsoft-sdk-java:0.0.1"
 ```
 
 ### Others
@@ -49,7 +49,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/infusionsoft-api-0.1.jar
+* target/infusionsoft-sdk-java-0.0.1.jar
 * target/lib/*.jar
 
 ## Getting Started
