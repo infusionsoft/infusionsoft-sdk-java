@@ -1,6 +1,6 @@
 # TagsApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createTagCategoryUsingPOST**](TagsApi.md#createTagCategoryUsingPOST) | **POST** /tags/categories | Create Tag Category
 [**createTagUsingPOST**](TagsApi.md#createTagUsingPOST) | **POST** /tags | Create Tag
 [**getTagUsingGET**](TagsApi.md#getTagUsingGET) | **GET** /tags/{id} | Retrieve a Tag
+[**listCompaniesForTagIdUsingGET**](TagsApi.md#listCompaniesForTagIdUsingGET) | **GET** /tags/{tagId}/companies | List Tagged Companies
 [**listContactsForTagIdUsingGET**](TagsApi.md#listContactsForTagIdUsingGET) | **GET** /tags/{tagId}/contacts | List Tagged Contacts
 [**listTagsUsingGET**](TagsApi.md#listTagsUsingGET) | **GET** /tags | List Tags
 [**removeTagFromContactIdUsingDELETE**](TagsApi.md#removeTagFromContactIdUsingDELETE) | **DELETE** /tags/{tagId}/contacts/{contactId} | Remove Tag from Contact
@@ -77,7 +78,7 @@ Create a new tag category
 
 
 TagsApi apiInstance = new TagsApi();
-InfusionsoftTagCategory tagCategory = new InfusionsoftTagCategory(); // InfusionsoftTagCategory | TagCategory
+InfusionsoftCreateTagCategory tagCategory = new InfusionsoftCreateTagCategory(); // InfusionsoftCreateTagCategory | tagCategory
 try {
     InfusionsoftTagCategory result = apiInstance.createTagCategoryUsingPOST(tagCategory);
     System.out.println(result);
@@ -91,7 +92,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tagCategory** | [**InfusionsoftTagCategory**](InfusionsoftTagCategory.md)| TagCategory | [optional]
+ **tagCategory** | [**InfusionsoftCreateTagCategory**](InfusionsoftCreateTagCategory.md)| tagCategory |
 
 ### Return type
 
@@ -108,7 +109,7 @@ No authorization required
 
 <a name="createTagUsingPOST"></a>
 # **createTagUsingPOST**
-> InfusionsoftTagModel createTagUsingPOST(tag)
+> InfusionsoftTag createTagUsingPOST(tag)
 
 Create Tag
 
@@ -122,9 +123,9 @@ Create a new tag
 
 
 TagsApi apiInstance = new TagsApi();
-InfusionsoftTagModel tag = new InfusionsoftTagModel(); // InfusionsoftTagModel | TagModel
+InfusionsoftCreateTag tag = new InfusionsoftCreateTag(); // InfusionsoftCreateTag | tag
 try {
-    InfusionsoftTagModel result = apiInstance.createTagUsingPOST(tag);
+    InfusionsoftTag result = apiInstance.createTagUsingPOST(tag);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TagsApi#createTagUsingPOST");
@@ -136,11 +137,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **tag** | [**InfusionsoftTagModel**](InfusionsoftTagModel.md)| TagModel | [optional]
+ **tag** | [**InfusionsoftCreateTag**](InfusionsoftCreateTag.md)| tag |
 
 ### Return type
 
-[**InfusionsoftTagModel**](InfusionsoftTagModel.md)
+[**InfusionsoftTag**](InfusionsoftTag.md)
 
 ### Authorization
 
@@ -153,7 +154,7 @@ No authorization required
 
 <a name="getTagUsingGET"></a>
 # **getTagUsingGET**
-> InfusionsoftTagModel getTagUsingGET(id)
+> InfusionsoftTag getTagUsingGET(id)
 
 Retrieve a Tag
 
@@ -169,7 +170,7 @@ Retrieves a single tag
 TagsApi apiInstance = new TagsApi();
 Long id = 789L; // Long | id
 try {
-    InfusionsoftTagModel result = apiInstance.getTagUsingGET(id);
+    InfusionsoftTag result = apiInstance.getTagUsingGET(id);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TagsApi#getTagUsingGET");
@@ -185,7 +186,56 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InfusionsoftTagModel**](InfusionsoftTagModel.md)
+[**InfusionsoftTag**](InfusionsoftTag.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="listCompaniesForTagIdUsingGET"></a>
+# **listCompaniesForTagIdUsingGET**
+> InfusionsoftTaggedCompanyList listCompaniesForTagIdUsingGET(tagId, limit, offset)
+
+List Tagged Companies
+
+Retrieves a list of companies that have the given tag applied
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.TagsApi;
+
+
+TagsApi apiInstance = new TagsApi();
+Long tagId = 789L; // Long | tagId
+Integer limit = 56; // Integer | Sets a total of items to return
+Integer offset = 56; // Integer | Sets a beginning range of items to return
+try {
+    InfusionsoftTaggedCompanyList result = apiInstance.listCompaniesForTagIdUsingGET(tagId, limit, offset);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling TagsApi#listCompaniesForTagIdUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **tagId** | **Long**| tagId |
+ **limit** | **Integer**| Sets a total of items to return | [optional]
+ **offset** | **Integer**| Sets a beginning range of items to return | [optional]
+
+### Return type
+
+[**InfusionsoftTaggedCompanyList**](InfusionsoftTaggedCompanyList.md)
 
 ### Authorization
 
@@ -247,7 +297,7 @@ No authorization required
 
 <a name="listTagsUsingGET"></a>
 # **listTagsUsingGET**
-> InfusionsoftTagList listTagsUsingGET(limit, offset, category)
+> InfusionsoftTags listTagsUsingGET(limit, offset, category, name)
 
 List Tags
 
@@ -264,8 +314,9 @@ TagsApi apiInstance = new TagsApi();
 Integer limit = 56; // Integer | Sets a total of items to return
 Integer offset = 56; // Integer | Sets a beginning range of items to return
 Long category = 789L; // Long | Category Id of tags to filter by
+String name = "name_example"; // String | Filter for tags with a specific name
 try {
-    InfusionsoftTagList result = apiInstance.listTagsUsingGET(limit, offset, category);
+    InfusionsoftTags result = apiInstance.listTagsUsingGET(limit, offset, category, name);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TagsApi#listTagsUsingGET");
@@ -280,10 +331,11 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| Sets a total of items to return | [optional]
  **offset** | **Integer**| Sets a beginning range of items to return | [optional]
  **category** | **Long**| Category Id of tags to filter by | [optional]
+ **name** | **String**| Filter for tags with a specific name | [optional]
 
 ### Return type
 
-[**InfusionsoftTagList**](InfusionsoftTagList.md)
+[**InfusionsoftTags**](InfusionsoftTags.md)
 
 ### Authorization
 

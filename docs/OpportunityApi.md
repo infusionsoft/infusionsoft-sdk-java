@@ -1,6 +1,6 @@
 # OpportunityApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,8 +8,9 @@ Method | HTTP request | Description
 [**getOpportunityUsingGET**](OpportunityApi.md#getOpportunityUsingGET) | **GET** /opportunities/{opportunityId} | Retrieve an Opportunity
 [**listOpportunitiesUsingGET**](OpportunityApi.md#listOpportunitiesUsingGET) | **GET** /opportunities | List Opportunities
 [**listOpportunityStagePipelinesUsingGET**](OpportunityApi.md#listOpportunityStagePipelinesUsingGET) | **GET** /opportunity/stage_pipeline | List Opportunity Stage Pipeline
+[**retrieveOpportunityModelUsingGET**](OpportunityApi.md#retrieveOpportunityModelUsingGET) | **GET** /opportunities/model | Retrieve Opportunity Model
 [**updateOpportunityUsingPUT**](OpportunityApi.md#updateOpportunityUsingPUT) | **PUT** /opportunities | Replace an Opportunity
-[**updateProperitesOnOpportunityUsingPATCH**](OpportunityApi.md#updateProperitesOnOpportunityUsingPATCH) | **PATCH** /opportunities/{opportunityId} | Update an Opportunity
+[**updatePropertiesOnOpportunityUsingPATCH**](OpportunityApi.md#updatePropertiesOnOpportunityUsingPATCH) | **PATCH** /opportunities/{opportunityId} | Update an Opportunity
 
 
 <a name="createOpportunityUsingPOST"></a>
@@ -59,7 +60,7 @@ No authorization required
 
 <a name="getOpportunityUsingGET"></a>
 # **getOpportunityUsingGET**
-> InfusionsoftOpportunity getOpportunityUsingGET(opportunityId)
+> InfusionsoftOpportunity getOpportunityUsingGET(opportunityId, optionalProperties)
 
 Retrieve an Opportunity
 
@@ -74,8 +75,9 @@ Retrives a single opportunity
 
 OpportunityApi apiInstance = new OpportunityApi();
 Long opportunityId = 789L; // Long | opportunityId
+List<String> optionalProperties = Arrays.asList("optionalProperties_example"); // List<String> | Comma-delimited list of Opportunity properties to include in the response. (Some fields such as `custom_fields` aren't included, by default.)
 try {
-    InfusionsoftOpportunity result = apiInstance.getOpportunityUsingGET(opportunityId);
+    InfusionsoftOpportunity result = apiInstance.getOpportunityUsingGET(opportunityId, optionalProperties);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling OpportunityApi#getOpportunityUsingGET");
@@ -88,6 +90,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **opportunityId** | **Long**| opportunityId |
+ **optionalProperties** | [**List&lt;String&gt;**](String.md)| Comma-delimited list of Opportunity properties to include in the response. (Some fields such as &#x60;custom_fields&#x60; aren&#39;t included, by default.) | [optional]
 
 ### Return type
 
@@ -108,7 +111,7 @@ No authorization required
 
 List Opportunities
 
-Retrieves a list of all opportunities
+Retrieves a list of all opportunities.  Please note: the sample response erroneously shows properties, such as _stage reasons_, that are unavailable through the list endpoint. Such properties are only available through the retrieve operation. Future versions of the Opportunity resource will correct the oversight.
 
 ### Example
 ```java
@@ -198,6 +201,47 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="retrieveOpportunityModelUsingGET"></a>
+# **retrieveOpportunityModelUsingGET**
+> InfusionsoftObjectModel retrieveOpportunityModelUsingGET()
+
+Retrieve Opportunity Model
+
+Get the custom fields for the Opportunity object
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.OpportunityApi;
+
+
+OpportunityApi apiInstance = new OpportunityApi();
+try {
+    InfusionsoftObjectModel result = apiInstance.retrieveOpportunityModelUsingGET();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling OpportunityApi#retrieveOpportunityModelUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InfusionsoftObjectModel**](InfusionsoftObjectModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="updateOpportunityUsingPUT"></a>
 # **updateOpportunityUsingPUT**
 > InfusionsoftOpportunity updateOpportunityUsingPUT(opportunity)
@@ -243,9 +287,9 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="updateProperitesOnOpportunityUsingPATCH"></a>
-# **updateProperitesOnOpportunityUsingPATCH**
-> InfusionsoftOpportunity updateProperitesOnOpportunityUsingPATCH(opportunityId, opportunity)
+<a name="updatePropertiesOnOpportunityUsingPATCH"></a>
+# **updatePropertiesOnOpportunityUsingPATCH**
+> InfusionsoftOpportunity updatePropertiesOnOpportunityUsingPATCH(opportunityId, opportunity)
 
 Update an Opportunity
 
@@ -262,10 +306,10 @@ OpportunityApi apiInstance = new OpportunityApi();
 Long opportunityId = 789L; // Long | opportunityId
 InfusionsoftOpportunity opportunity = new InfusionsoftOpportunity(); // InfusionsoftOpportunity | opportunity
 try {
-    InfusionsoftOpportunity result = apiInstance.updateProperitesOnOpportunityUsingPATCH(opportunityId, opportunity);
+    InfusionsoftOpportunity result = apiInstance.updatePropertiesOnOpportunityUsingPATCH(opportunityId, opportunity);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling OpportunityApi#updateProperitesOnOpportunityUsingPATCH");
+    System.err.println("Exception when calling OpportunityApi#updatePropertiesOnOpportunityUsingPATCH");
     e.printStackTrace();
 }
 ```

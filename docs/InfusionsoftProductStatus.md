@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**product** | [**InfusionsoftProduct**](InfusionsoftProduct.md) |  |  [optional]
+**product** | [**InfusionsoftProduct_**](InfusionsoftProduct_.md) |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
 
 

@@ -4,7 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**InfusionsoftAddress**](InfusionsoftAddress.md) |  |  [optional]
+**address** | [**InfusionsoftContactAddress**](InfusionsoftContactAddress.md) |  |  [optional]
+**businessGoals** | **List&lt;String&gt;** | The goals of this business, ie. Grow Business, Convert more leads |  [optional]
+**businessPrimaryColor** | **String** |  |  [optional]
+**businessSecondaryColor** | **String** |  |  [optional]
+**businessType** | **String** | The type of business |  [optional]
 **currencyCode** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
 **languageTag** | **String** |  |  [optional]

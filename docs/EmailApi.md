@@ -1,6 +1,6 @@
 # EmailApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -10,6 +10,7 @@ Method | HTTP request | Description
 [**deleteEmailsUsingPOST**](EmailApi.md#deleteEmailsUsingPOST) | **POST** /emails/unsync | Un-sync a batch of Email Records
 [**getEmailUsingGET**](EmailApi.md#getEmailUsingGET) | **GET** /emails/{id} | Retrieve an Email
 [**listEmailsUsingGET**](EmailApi.md#listEmailsUsingGET) | **GET** /emails | List Emails
+[**sendEmailUsingPOST**](EmailApi.md#sendEmailUsingPOST) | **POST** /emails/queue | Send an Email
 [**updateEmailUsingPUT**](EmailApi.md#updateEmailUsingPUT) | **PUT** /emails/{id} | Update an Email Record
 
 
@@ -239,11 +240,11 @@ No authorization required
 
 <a name="listEmailsUsingGET"></a>
 # **listEmailsUsingGET**
-> InfusionsoftEmailSentQueryResultList listEmailsUsingGET(limit, offset, contactId, email)
+> InfusionsoftEmailSentQueryResultList listEmailsUsingGET(limit, offset, contactId, email, sinceSentDate, untilSentDate, ordered)
 
 List Emails
 
-Retrieve a list of emails that have been sent
+Retrieve a list of emails that have been sent  Keap is currently investigating an issue with degraded performance of this endpoint with very large (millions of records) record sets
 
 ### Example
 ```java
@@ -257,8 +258,11 @@ Integer limit = 56; // Integer | Sets a total of items to return
 Integer offset = 56; // Integer | Sets a beginning range of items to return
 Long contactId = 789L; // Long | Optional Contact Id to find Emails for
 String email = "email_example"; // String | Optional email address to query on
+String sinceSentDate = "sinceSentDate_example"; // String | Optional date to query on, emails sent since the provided date, must be present if untilDate is provided
+String untilSentDate = "untilSentDate_example"; // String | Optional date to query on, email sent until the provided date
+Boolean ordered = true; // Boolean | Optional boolean to turn off ORDER BY in SQL query
 try {
-    InfusionsoftEmailSentQueryResultList result = apiInstance.listEmailsUsingGET(limit, offset, contactId, email);
+    InfusionsoftEmailSentQueryResultList result = apiInstance.listEmailsUsingGET(limit, offset, contactId, email, sinceSentDate, untilSentDate, ordered);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling EmailApi#listEmailsUsingGET");
@@ -274,10 +278,57 @@ Name | Type | Description  | Notes
  **offset** | **Integer**| Sets a beginning range of items to return | [optional]
  **contactId** | **Long**| Optional Contact Id to find Emails for | [optional]
  **email** | **String**| Optional email address to query on | [optional]
+ **sinceSentDate** | **String**| Optional date to query on, emails sent since the provided date, must be present if untilDate is provided | [optional]
+ **untilSentDate** | **String**| Optional date to query on, email sent until the provided date | [optional]
+ **ordered** | **Boolean**| Optional boolean to turn off ORDER BY in SQL query | [optional] [default to true]
 
 ### Return type
 
 [**InfusionsoftEmailSentQueryResultList**](InfusionsoftEmailSentQueryResultList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="sendEmailUsingPOST"></a>
+# **sendEmailUsingPOST**
+> sendEmailUsingPOST(emailSendRequest)
+
+Send an Email
+
+Send an Email to a list of Contacts
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.EmailApi;
+
+
+EmailApi apiInstance = new EmailApi();
+InfusionsoftEmailSendRequest emailSendRequest = new InfusionsoftEmailSendRequest(); // InfusionsoftEmailSendRequest | emailSendRequest
+try {
+    apiInstance.sendEmailUsingPOST(emailSendRequest);
+} catch (ApiException e) {
+    System.err.println("Exception when calling EmailApi#sendEmailUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **emailSendRequest** | [**InfusionsoftEmailSendRequest**](InfusionsoftEmailSendRequest.md)| emailSendRequest | [optional]
+
+### Return type
+
+null (empty response body)
 
 ### Authorization
 

@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **extension** | **String** |  |  [optional]
-**field** | [**FieldEnum**](#FieldEnum) |  |  [optional]
+**field** | [**FieldEnum**](#FieldEnum) |  | 
 **number** | **String** |  |  [optional]
 **type** | **String** |  |  [optional]
 

@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **fileBoxType** | [**FileBoxTypeEnum**](#FileBoxTypeEnum) |  |  [optional]
 **fileName** | **String** |  |  [optional]
 **fileSize** | **Long** |  |  [optional]
+**id** | **Long** |  | 
 **lastUpdated** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **_public** | **Boolean** |  |  [optional]
 **remoteFileKey** | **String** |  |  [optional]

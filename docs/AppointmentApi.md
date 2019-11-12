@@ -1,16 +1,63 @@
 # AppointmentApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createAppointmentCustomFieldUsingPOST**](AppointmentApi.md#createAppointmentCustomFieldUsingPOST) | **POST** /appointments/model/customFields | Create a Custom Field
 [**createAppointmentUsingPOST**](AppointmentApi.md#createAppointmentUsingPOST) | **POST** /appointments | Create an Appointment
 [**deleteAppointmentUsingDELETE**](AppointmentApi.md#deleteAppointmentUsingDELETE) | **DELETE** /appointments/{appointmentId} | Delete an Appointment
 [**getAppointmentUsingGET**](AppointmentApi.md#getAppointmentUsingGET) | **GET** /appointments/{appointmentId} | Retrieve an Appointment
 [**listAppointmentsUsingGET**](AppointmentApi.md#listAppointmentsUsingGET) | **GET** /appointments | List Appointments
+[**retrieveAppointmentModelUsingGET**](AppointmentApi.md#retrieveAppointmentModelUsingGET) | **GET** /appointments/model | Retrieve Appointment Model
 [**updateAppointmentUsingPUT**](AppointmentApi.md#updateAppointmentUsingPUT) | **PUT** /appointments/{appointmentId} | Replace an Appointment
 [**updatePropertiesOnAppointmentUsingPATCH**](AppointmentApi.md#updatePropertiesOnAppointmentUsingPATCH) | **PATCH** /appointments/{appointmentId} | Update an Appointment
 
+
+<a name="createAppointmentCustomFieldUsingPOST"></a>
+# **createAppointmentCustomFieldUsingPOST**
+> InfusionsoftCustomFieldMetaData createAppointmentCustomFieldUsingPOST(customField)
+
+Create a Custom Field
+
+Adds a custom field of the specified type and options to the Appointment object.
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.AppointmentApi;
+
+
+AppointmentApi apiInstance = new AppointmentApi();
+InfusionsoftCreateRestCustomField customField = new InfusionsoftCreateRestCustomField(); // InfusionsoftCreateRestCustomField | customField
+try {
+    InfusionsoftCustomFieldMetaData result = apiInstance.createAppointmentCustomFieldUsingPOST(customField);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AppointmentApi#createAppointmentCustomFieldUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customField** | [**InfusionsoftCreateRestCustomField**](InfusionsoftCreateRestCustomField.md)| customField |
+
+### Return type
+
+[**InfusionsoftCustomFieldMetaData**](InfusionsoftCustomFieldMetaData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="createAppointmentUsingPOST"></a>
 # **createAppointmentUsingPOST**
@@ -107,7 +154,7 @@ No authorization required
 
 Retrieve an Appointment
 
-Retrieves a specific appointment belonging to the authenticated user
+Retrieves a specific appointment with respect to user permissions. The authenticated user will need the \&quot;can view all records\&quot; permission for Task/Appt/Notes
 
 ### Example
 ```java
@@ -189,6 +236,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InfusionsoftAppointmentList**](InfusionsoftAppointmentList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="retrieveAppointmentModelUsingGET"></a>
+# **retrieveAppointmentModelUsingGET**
+> InfusionsoftObjectModel retrieveAppointmentModelUsingGET()
+
+Retrieve Appointment Model
+
+Get the custom fields for the Appointment object
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.AppointmentApi;
+
+
+AppointmentApi apiInstance = new AppointmentApi();
+try {
+    InfusionsoftObjectModel result = apiInstance.retrieveAppointmentModelUsingGET();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AppointmentApi#retrieveAppointmentModelUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InfusionsoftObjectModel**](InfusionsoftObjectModel.md)
 
 ### Authorization
 
