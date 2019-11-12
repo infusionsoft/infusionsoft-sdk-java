@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **id** | **Long** |  |  [optional]
 **label** | **String** |  |  [optional]
 **options** | [**List&lt;InfusionsoftCustomFieldOption&gt;**](InfusionsoftCustomFieldOption.md) |  |  [optional]
+**recordType** | [**RecordTypeEnum**](#RecordTypeEnum) |  |  [optional]
 
 
 <a name="FieldTypeEnum"></a>
@@ -38,6 +39,19 @@ USERLISTBOX | &quot;UserListBox&quot;
 WEBSITE | &quot;Website&quot;
 YEAR | &quot;Year&quot;
 YESNO | &quot;YesNo&quot;
+
+
+<a name="RecordTypeEnum"></a>
+## Enum: RecordTypeEnum
+Name | Value
+---- | -----
+CONTACT | &quot;CONTACT&quot;
+REFERRAL_PARTNER | &quot;REFERRAL_PARTNER&quot;
+OPPORTUNITY | &quot;OPPORTUNITY&quot;
+TASK_NOTE_APPOINTMENT | &quot;TASK_NOTE_APPOINTMENT&quot;
+COMPANY | &quot;COMPANY&quot;
+ORDER | &quot;ORDER&quot;
+SUBSCRIPTION | &quot;SUBSCRIPTION&quot;
 
 
 

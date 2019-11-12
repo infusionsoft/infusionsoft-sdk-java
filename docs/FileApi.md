@@ -1,6 +1,6 @@
 # FileApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -27,7 +27,7 @@ Upload a base64 encoded file. &#x60;contact_id&#x60; is required only when &#x60
 
 
 FileApi apiInstance = new FileApi();
-InfusionsoftFileUpload fileUpload = new InfusionsoftFileUpload(); // InfusionsoftFileUpload | fileUploadDTO
+InfusionsoftFileUpload fileUpload = new InfusionsoftFileUpload(); // InfusionsoftFileUpload | fileUpload
 try {
     InfusionsoftFileInformation result = apiInstance.createFileUsingPOST(fileUpload);
     System.out.println(result);
@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **fileUpload** | [**InfusionsoftFileUpload**](InfusionsoftFileUpload.md)| fileUploadDTO | [optional]
+ **fileUpload** | [**InfusionsoftFileUpload**](InfusionsoftFileUpload.md)| fileUpload | [optional]
 
 ### Return type
 
@@ -149,7 +149,7 @@ No authorization required
 
 <a name="listFilesUsingGET"></a>
 # **listFilesUsingGET**
-> InfusionsoftFileList listFilesUsingGET(limit, offset, viewable, permission, type, name)
+> InfusionsoftFileList listFilesUsingGET(limit, offset, viewable, permission, type, name, contactId)
 
 List Files
 
@@ -169,8 +169,9 @@ String viewable = "viewable_example"; // String | Include public or private file
 String permission = "permission_example"; // String | Filter based on the permission of files (USER or COMPANY), defaults to BOTH.
 String type = "type_example"; // String | Filter based on the type of file.
 String name = "name_example"; // String | Filter files based on name, with '*' preceding or following to indicate LIKE queries.
+Long contactId = 789L; // Long | Filter based on Contact Id, if user has permission to see Contact files.
 try {
-    InfusionsoftFileList result = apiInstance.listFilesUsingGET(limit, offset, viewable, permission, type, name);
+    InfusionsoftFileList result = apiInstance.listFilesUsingGET(limit, offset, viewable, permission, type, name, contactId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FileApi#listFilesUsingGET");
@@ -188,6 +189,7 @@ Name | Type | Description  | Notes
  **permission** | **String**| Filter based on the permission of files (USER or COMPANY), defaults to BOTH. | [optional] [enum: USER, COMPANY, BOTH]
  **type** | **String**| Filter based on the type of file. | [optional] [enum: Application, Image, Fax, Attachment, Ticket, Contact, DigitalProduct, Import, Hidden, WebForm, StyledCart, ReSampledImage, TemplateThumbnail, Funnel, LogoThumbnail]
  **name** | **String**| Filter files based on name, with &#39;*&#39; preceding or following to indicate LIKE queries. | [optional]
+ **contactId** | **Long**| Filter based on Contact Id, if user has permission to see Contact files. | [optional]
 
 ### Return type
 

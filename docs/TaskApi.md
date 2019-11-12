@@ -1,17 +1,64 @@
 # TaskApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createTaskCustomFieldUsingPOST**](TaskApi.md#createTaskCustomFieldUsingPOST) | **POST** /tasks/model/customFields | Create a Custom Field
 [**createTaskUsingPOST**](TaskApi.md#createTaskUsingPOST) | **POST** /tasks | Create a Task
 [**deleteTaskUsingDELETE**](TaskApi.md#deleteTaskUsingDELETE) | **DELETE** /tasks/{taskId} | Delete a Task
 [**getTaskUsingGET**](TaskApi.md#getTaskUsingGET) | **GET** /tasks/{taskId} | Retrieve a Task
 [**listTasksForCurrentUserUsingGET**](TaskApi.md#listTasksForCurrentUserUsingGET) | **GET** /tasks/search | Search Tasks
 [**listTasksUsingGET**](TaskApi.md#listTasksUsingGET) | **GET** /tasks | List Tasks
+[**retrieveTaskModelUsingGET**](TaskApi.md#retrieveTaskModelUsingGET) | **GET** /tasks/model | Retrieve Task Model
 [**updatePropertiesOnTaskUsingPATCH**](TaskApi.md#updatePropertiesOnTaskUsingPATCH) | **PATCH** /tasks/{taskId} | Update a Task
 [**updateTaskUsingPUT**](TaskApi.md#updateTaskUsingPUT) | **PUT** /tasks/{taskId} | Replace a Task
 
+
+<a name="createTaskCustomFieldUsingPOST"></a>
+# **createTaskCustomFieldUsingPOST**
+> InfusionsoftCustomFieldMetaData createTaskCustomFieldUsingPOST(customField)
+
+Create a Custom Field
+
+Adds a custom field of the specified type and options to the Task object.
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.TaskApi;
+
+
+TaskApi apiInstance = new TaskApi();
+InfusionsoftCreateRestCustomField customField = new InfusionsoftCreateRestCustomField(); // InfusionsoftCreateRestCustomField | customField
+try {
+    InfusionsoftCustomFieldMetaData result = apiInstance.createTaskCustomFieldUsingPOST(customField);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling TaskApi#createTaskCustomFieldUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customField** | [**InfusionsoftCreateRestCustomField**](InfusionsoftCreateRestCustomField.md)| customField |
+
+### Return type
+
+[**InfusionsoftCustomFieldMetaData**](InfusionsoftCustomFieldMetaData.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="createTaskUsingPOST"></a>
 # **createTaskUsingPOST**
@@ -259,6 +306,47 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**InfusionsoftTaskList**](InfusionsoftTaskList.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="retrieveTaskModelUsingGET"></a>
+# **retrieveTaskModelUsingGET**
+> InfusionsoftObjectModel retrieveTaskModelUsingGET()
+
+Retrieve Task Model
+
+Get the custom fields for the Task object
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.TaskApi;
+
+
+TaskApi apiInstance = new TaskApi();
+try {
+    InfusionsoftObjectModel result = apiInstance.retrieveTaskModelUsingGET();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling TaskApi#retrieveTaskModelUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InfusionsoftObjectModel**](InfusionsoftObjectModel.md)
 
 ### Authorization
 

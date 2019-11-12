@@ -1,22 +1,25 @@
 # ContactApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**applyTagsToContactIdUsingPOST**](ContactApi.md#applyTagsToContactIdUsingPOST) | **POST** /contacts/{contactId}/tags | Apply Tags
 [**createContactUsingPOST**](ContactApi.md#createContactUsingPOST) | **POST** /contacts | Create a Contact
+[**createCreditCardUsingPOST**](ContactApi.md#createCreditCardUsingPOST) | **POST** /contacts/{contactId}/creditCards | Create a Credit Card
+[**createCustomFieldUsingPOST**](ContactApi.md#createCustomFieldUsingPOST) | **POST** /contacts/model/customFields | Create a Custom Field
 [**createEmailForContactUsingPOST**](ContactApi.md#createEmailForContactUsingPOST) | **POST** /contacts/{contactId}/emails | Create an Email Record
 [**createOrUpdateContactUsingPUT**](ContactApi.md#createOrUpdateContactUsingPUT) | **PUT** /contacts | Create or Update a Contact
 [**deleteContactUsingDELETE**](ContactApi.md#deleteContactUsingDELETE) | **DELETE** /contacts/{contactId} | Delete a Contact
 [**getContactUsingGET**](ContactApi.md#getContactUsingGET) | **GET** /contacts/{id} | Retrieve a Contact
 [**listAppliedTagsUsingGET**](ContactApi.md#listAppliedTagsUsingGET) | **GET** /contacts/{contactId}/tags | List Applied Tags
 [**listContactsUsingGET**](ContactApi.md#listContactsUsingGET) | **GET** /contacts | List Contacts
-[**listCustomFieldsUsingGET**](ContactApi.md#listCustomFieldsUsingGET) | **GET** /contactCustomFields | List Contact Custom Fields
+[**listCreditCardsUsingGET**](ContactApi.md#listCreditCardsUsingGET) | **GET** /contacts/{contactId}/creditCards | Retrieve Credit Cards
 [**listEmailsForContactUsingGET**](ContactApi.md#listEmailsForContactUsingGET) | **GET** /contacts/{contactId}/emails | List Emails
-[**removeTagsFromContactUsingDELETE**](ContactApi.md#removeTagsFromContactUsingDELETE) | **DELETE** /contacts/{contactId}/tags/{tagId} | Remove Applied Tag
-[**removeTagsFromContactUsingDELETE1**](ContactApi.md#removeTagsFromContactUsingDELETE1) | **DELETE** /contacts/{contactId}/tags | Remove Applied Tags
-[**updatePropertiesOnContactUsingPATCH**](ContactApi.md#updatePropertiesOnContactUsingPATCH) | **PATCH** /contacts/{contactId} | Update a Contact
+[**removeTagsFromContactUsingDELETE**](ContactApi.md#removeTagsFromContactUsingDELETE) | **DELETE** /contacts/{contactId}/tags | Remove Applied Tags
+[**removeTagsFromContactUsingDELETE1**](ContactApi.md#removeTagsFromContactUsingDELETE1) | **DELETE** /contacts/{contactId}/tags/{tagId} | Remove Applied Tag
+[**retrieveContactModelUsingGET**](ContactApi.md#retrieveContactModelUsingGET) | **GET** /contacts/model | Retrieve Contact Model
+[**updatePropertiesOnContactUsingPATCH1**](ContactApi.md#updatePropertiesOnContactUsingPATCH1) | **PATCH** /contacts/{contactId} | Update a Contact
 
 
 <a name="applyTagsToContactIdUsingPOST"></a>
@@ -82,7 +85,7 @@ Creates a new contact as the authenticated user. NB: Contact must contain at lea
 
 
 ContactApi apiInstance = new ContactApi();
-InfusionsoftFullContact contact = new InfusionsoftFullContact(); // InfusionsoftFullContact | contact
+InfusionsoftCreateOrPatchContact contact = new InfusionsoftCreateOrPatchContact(); // InfusionsoftCreateOrPatchContact | contact
 try {
     InfusionsoftFullContact result = apiInstance.createContactUsingPOST(contact);
     System.out.println(result);
@@ -96,11 +99,103 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **contact** | [**InfusionsoftFullContact**](InfusionsoftFullContact.md)| contact | [optional]
+ **contact** | [**InfusionsoftCreateOrPatchContact**](InfusionsoftCreateOrPatchContact.md)| contact | [optional]
 
 ### Return type
 
 [**InfusionsoftFullContact**](InfusionsoftFullContact.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createCreditCardUsingPOST"></a>
+# **createCreditCardUsingPOST**
+> InfusionsoftCreditCardAdded createCreditCardUsingPOST(contactId, creditCard)
+
+Create a Credit Card
+
+Creates a new credit card associated to a contact
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.ContactApi;
+
+
+ContactApi apiInstance = new ContactApi();
+Long contactId = 789L; // Long | contactId
+InfusionsoftCreditCard creditCard = new InfusionsoftCreditCard(); // InfusionsoftCreditCard | creditCard
+try {
+    InfusionsoftCreditCardAdded result = apiInstance.createCreditCardUsingPOST(contactId, creditCard);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContactApi#createCreditCardUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contactId** | **Long**| contactId |
+ **creditCard** | [**InfusionsoftCreditCard**](InfusionsoftCreditCard.md)| creditCard | [optional]
+
+### Return type
+
+[**InfusionsoftCreditCardAdded**](InfusionsoftCreditCardAdded.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createCustomFieldUsingPOST"></a>
+# **createCustomFieldUsingPOST**
+> InfusionsoftCustomFieldMetaData createCustomFieldUsingPOST(customField)
+
+Create a Custom Field
+
+Adds a custom field of the specified type and options to the Contact object.
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.ContactApi;
+
+
+ContactApi apiInstance = new ContactApi();
+InfusionsoftCreateRestCustomField customField = new InfusionsoftCreateRestCustomField(); // InfusionsoftCreateRestCustomField | customField
+try {
+    InfusionsoftCustomFieldMetaData result = apiInstance.createCustomFieldUsingPOST(customField);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContactApi#createCustomFieldUsingPOST");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **customField** | [**InfusionsoftCreateRestCustomField**](InfusionsoftCreateRestCustomField.md)| customField |
+
+### Return type
+
+[**InfusionsoftCustomFieldMetaData**](InfusionsoftCustomFieldMetaData.md)
 
 ### Authorization
 
@@ -209,7 +304,7 @@ No authorization required
 
 Delete a Contact
 
-Deletes the specified contact
+Deletes the specified contact.   If a request header named &#x60;GDPR-Redact&#x60; is included, the contact will instead be redacted according to [GDPR guidlines](https://gdpr-info.eu/). Redacting a contact will remove all personally identifiable information and cannot be undone.
 
 ### Example
 ```java
@@ -345,7 +440,7 @@ No authorization required
 
 <a name="listContactsUsingGET"></a>
 # **listContactsUsingGET**
-> InfusionsoftContactList listContactsUsingGET(limit, offset, email, givenName, familyName, order, orderDirection)
+> InfusionsoftContactList listContactsUsingGET(limit, offset, email, givenName, familyName, order, orderDirection, since, until)
 
 List Contacts
 
@@ -366,8 +461,10 @@ String givenName = "givenName_example"; // String | Optional first name or foren
 String familyName = "familyName_example"; // String | Optional last name or surname to query on
 String order = "order_example"; // String | Attribute to order items by
 String orderDirection = "orderDirection_example"; // String | How to order the data i.e. ascending (A-Z) or descending (Z-A)
+String since = "since_example"; // String | Date to start searching from on LastUpdated ex. `2017-01-01T22:17:59.039Z`
+String until = "until_example"; // String | Date to search to on LastUpdated ex. `2017-01-01T22:17:59.039Z`
 try {
-    InfusionsoftContactList result = apiInstance.listContactsUsingGET(limit, offset, email, givenName, familyName, order, orderDirection);
+    InfusionsoftContactList result = apiInstance.listContactsUsingGET(limit, offset, email, givenName, familyName, order, orderDirection, since, until);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContactApi#listContactsUsingGET");
@@ -386,6 +483,8 @@ Name | Type | Description  | Notes
  **familyName** | **String**| Optional last name or surname to query on | [optional]
  **order** | **String**| Attribute to order items by | [optional] [enum: id, date_created, name, email]
  **orderDirection** | **String**| How to order the data i.e. ascending (A-Z) or descending (Z-A) | [optional] [enum: ascending, descending]
+ **since** | **String**| Date to start searching from on LastUpdated ex. &#x60;2017-01-01T22:17:59.039Z&#x60; | [optional]
+ **until** | **String**| Date to search to on LastUpdated ex. &#x60;2017-01-01T22:17:59.039Z&#x60; | [optional]
 
 ### Return type
 
@@ -400,13 +499,13 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="listCustomFieldsUsingGET"></a>
-# **listCustomFieldsUsingGET**
-> List&lt;InfusionsoftCustomFieldMetaData&gt; listCustomFieldsUsingGET()
+<a name="listCreditCardsUsingGET"></a>
+# **listCreditCardsUsingGET**
+> List&lt;InfusionsoftContactCreditCard&gt; listCreditCardsUsingGET(contactId)
 
-List Contact Custom Fields
+Retrieve Credit Cards
 
-Retrieves a list of custom fields for Contacts
+List all Credit Cards on a contact
 
 ### Example
 ```java
@@ -416,21 +515,25 @@ Retrieves a list of custom fields for Contacts
 
 
 ContactApi apiInstance = new ContactApi();
+Long contactId = 789L; // Long | contactId
 try {
-    List<InfusionsoftCustomFieldMetaData> result = apiInstance.listCustomFieldsUsingGET();
+    List<InfusionsoftContactCreditCard> result = apiInstance.listCreditCardsUsingGET(contactId);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ContactApi#listCustomFieldsUsingGET");
+    System.err.println("Exception when calling ContactApi#listCreditCardsUsingGET");
     e.printStackTrace();
 }
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contactId** | **Long**| contactId |
 
 ### Return type
 
-[**List&lt;InfusionsoftCustomFieldMetaData&gt;**](InfusionsoftCustomFieldMetaData.md)
+[**List&lt;InfusionsoftContactCreditCard&gt;**](InfusionsoftContactCreditCard.md)
 
 ### Authorization
 
@@ -443,7 +546,7 @@ No authorization required
 
 <a name="listEmailsForContactUsingGET"></a>
 # **listEmailsForContactUsingGET**
-> InfusionsoftEmailSentQueryResultList listEmailsForContactUsingGET(contactId, limit, offset, contactId2, email)
+> InfusionsoftEmailSentQueryResultList listEmailsForContactUsingGET(contactId, limit, offset, email)
 
 List Emails
 
@@ -460,10 +563,9 @@ ContactApi apiInstance = new ContactApi();
 Long contactId = 789L; // Long | contactId
 Integer limit = 56; // Integer | Sets a total of items to return
 Integer offset = 56; // Integer | Sets a beginning range of items to return
-Long contactId2 = 789L; // Long | Optional Contact Id to find Emails for
 String email = "email_example"; // String | Optional email address to query on
 try {
-    InfusionsoftEmailSentQueryResultList result = apiInstance.listEmailsForContactUsingGET(contactId, limit, offset, contactId2, email);
+    InfusionsoftEmailSentQueryResultList result = apiInstance.listEmailsForContactUsingGET(contactId, limit, offset, email);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ContactApi#listEmailsForContactUsingGET");
@@ -478,7 +580,6 @@ Name | Type | Description  | Notes
  **contactId** | **Long**| contactId |
  **limit** | **Integer**| Sets a total of items to return | [optional]
  **offset** | **Integer**| Sets a beginning range of items to return | [optional]
- **contactId2** | **Long**| Optional Contact Id to find Emails for | [optional]
  **email** | **String**| Optional email address to query on | [optional]
 
 ### Return type
@@ -496,53 +597,7 @@ No authorization required
 
 <a name="removeTagsFromContactUsingDELETE"></a>
 # **removeTagsFromContactUsingDELETE**
-> removeTagsFromContactUsingDELETE(contactId, tagId)
-
-Remove Applied Tag
-
-Removes a tag from the given contact
-
-### Example
-```java
-// Import classes:
-//import com.infusionsoft.ApiException;
-//import com.infusionsoft.api.ContactApi;
-
-
-ContactApi apiInstance = new ContactApi();
-Long contactId = 789L; // Long | contactId
-Long tagId = 789L; // Long | tagId
-try {
-    apiInstance.removeTagsFromContactUsingDELETE(contactId, tagId);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ContactApi#removeTagsFromContactUsingDELETE");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contactId** | **Long**| contactId |
- **tagId** | **Long**| tagId |
-
-### Return type
-
-null (empty response body)
-
-### Authorization
-
-No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-<a name="removeTagsFromContactUsingDELETE1"></a>
-# **removeTagsFromContactUsingDELETE1**
-> removeTagsFromContactUsingDELETE1(contactId, ids)
+> removeTagsFromContactUsingDELETE(contactId, ids)
 
 Remove Applied Tags
 
@@ -559,9 +614,9 @@ ContactApi apiInstance = new ContactApi();
 Long contactId = 789L; // Long | contactId
 String ids = "ids_example"; // String | ids
 try {
-    apiInstance.removeTagsFromContactUsingDELETE1(contactId, ids);
+    apiInstance.removeTagsFromContactUsingDELETE(contactId, ids);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ContactApi#removeTagsFromContactUsingDELETE1");
+    System.err.println("Exception when calling ContactApi#removeTagsFromContactUsingDELETE");
     e.printStackTrace();
 }
 ```
@@ -586,9 +641,96 @@ No authorization required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
-<a name="updatePropertiesOnContactUsingPATCH"></a>
-# **updatePropertiesOnContactUsingPATCH**
-> InfusionsoftFullContact updatePropertiesOnContactUsingPATCH(contactId, contact)
+<a name="removeTagsFromContactUsingDELETE1"></a>
+# **removeTagsFromContactUsingDELETE1**
+> removeTagsFromContactUsingDELETE1(contactId, tagId)
+
+Remove Applied Tag
+
+Removes a tag from the given contact
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.ContactApi;
+
+
+ContactApi apiInstance = new ContactApi();
+Long contactId = 789L; // Long | contactId
+Long tagId = 789L; // Long | tagId
+try {
+    apiInstance.removeTagsFromContactUsingDELETE1(contactId, tagId);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContactApi#removeTagsFromContactUsingDELETE1");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contactId** | **Long**| contactId |
+ **tagId** | **Long**| tagId |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="retrieveContactModelUsingGET"></a>
+# **retrieveContactModelUsingGET**
+> InfusionsoftObjectModel retrieveContactModelUsingGET()
+
+Retrieve Contact Model
+
+Get the custom fields and optional properties for the Contact object
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.ContactApi;
+
+
+ContactApi apiInstance = new ContactApi();
+try {
+    InfusionsoftObjectModel result = apiInstance.retrieveContactModelUsingGET();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ContactApi#retrieveContactModelUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InfusionsoftObjectModel**](InfusionsoftObjectModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="updatePropertiesOnContactUsingPATCH1"></a>
+# **updatePropertiesOnContactUsingPATCH1**
+> InfusionsoftFullContact updatePropertiesOnContactUsingPATCH1(contactId, contact, updateMask)
 
 Update a Contact
 
@@ -603,12 +745,13 @@ Updates a contact with only the values provided in the request.  You may opt-in 
 
 ContactApi apiInstance = new ContactApi();
 Long contactId = 789L; // Long | contactId
-InfusionsoftFullContact contact = new InfusionsoftFullContact(); // InfusionsoftFullContact | contact
+InfusionsoftCreateOrPatchContact contact = new InfusionsoftCreateOrPatchContact(); // InfusionsoftCreateOrPatchContact | contact
+List<String> updateMask = Arrays.asList("updateMask_example"); // List<String> | An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped.
 try {
-    InfusionsoftFullContact result = apiInstance.updatePropertiesOnContactUsingPATCH(contactId, contact);
+    InfusionsoftFullContact result = apiInstance.updatePropertiesOnContactUsingPATCH1(contactId, contact, updateMask);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ContactApi#updatePropertiesOnContactUsingPATCH");
+    System.err.println("Exception when calling ContactApi#updatePropertiesOnContactUsingPATCH1");
     e.printStackTrace();
 }
 ```
@@ -618,7 +761,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **Long**| contactId |
- **contact** | [**InfusionsoftFullContact**](InfusionsoftFullContact.md)| contact | [optional]
+ **contact** | [**InfusionsoftCreateOrPatchContact**](InfusionsoftCreateOrPatchContact.md)| contact | [optional]
+ **updateMask** | [**List&lt;String&gt;**](String.md)| An optional list of properties to be updated. If set, only the provided properties will be updated and others will be skipped. | [optional]
 
 ### Return type
 

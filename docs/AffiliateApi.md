@@ -1,11 +1,53 @@
 # AffiliateApi
 
-All URIs are relative to *https://api.infusiontest.com/crm/rest/v1*
+All URIs are relative to *https://api.infusionsoft.com/crm/rest/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**retrieveAffiliateModelUsingGET**](AffiliateApi.md#retrieveAffiliateModelUsingGET) | **GET** /affiliates/model | Retrieve Affiliate Model
 [**searchCommissionsUsingGET**](AffiliateApi.md#searchCommissionsUsingGET) | **GET** /affiliates/commissions | Retrieve Commissions
 
+
+<a name="retrieveAffiliateModelUsingGET"></a>
+# **retrieveAffiliateModelUsingGET**
+> InfusionsoftObjectModel retrieveAffiliateModelUsingGET()
+
+Retrieve Affiliate Model
+
+Get the custom fields for the Affiliate object
+
+### Example
+```java
+// Import classes:
+//import com.infusionsoft.ApiException;
+//import com.infusionsoft.api.AffiliateApi;
+
+
+AffiliateApi apiInstance = new AffiliateApi();
+try {
+    InfusionsoftObjectModel result = apiInstance.retrieveAffiliateModelUsingGET();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AffiliateApi#retrieveAffiliateModelUsingGET");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**InfusionsoftObjectModel**](InfusionsoftObjectModel.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="searchCommissionsUsingGET"></a>
 # **searchCommissionsUsingGET**

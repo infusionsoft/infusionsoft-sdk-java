@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **name** | **String** |  |  [optional]
 **notes** | **String** |  |  [optional]
 **price** | **Double** |  |  [optional]
-**product** | [**InfusionsoftSimpleProduct**](InfusionsoftSimpleProduct.md) |  |  [optional]
+**product** | [**InfusionsoftProduct_**](InfusionsoftProduct_.md) |  |  [optional]
 **quantity** | **Integer** |  |  [optional]
 **type** | **String** |  |  [optional]
 
